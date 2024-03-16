@@ -13,12 +13,12 @@ class Voter
 	public:
 		void insert()
 		{
-			cout << "Enter Name"<<endl;
-			cout<<"First Name:";
+			cout << "Enter Voter's Details"<<endl;
+			cout<<"First Name:"<<endl;
 			getline(cin, first_name);
-			cout<<"\nMiddle Name:";
+			cout<<"Middle Name:"<<endl;
 			getline(cin, middle_name);
-			cout<<"\nSurname:";
+			cout<<"Surname:"<<endl;
 			getline(cin, surname);
 			cout<<"Date Of Birth: (dd-mm-yyyy)"<<endl;
 			getline(cin, DOB);
@@ -28,14 +28,14 @@ class Voter
 			getline(cin, polling_stn);
 		}
 
-		void save(const string &filename)
+		void save(const string& filename)
 		{
 			ofstream file("voters.txt", ios::app);
 
 			if (file.is_open())
 			{
-				file<< voter_ID<<"\t"<<surname<<","<<first_name<<" "<<middle_name<<"\t"<<national_ID<<"\t"<<polling_stn;
-				file.close()
+				file<<voter_ID<<"\t"<<national_ID<<"\t"<<surname<<","<<first_name<<" "<<middle_name<<"\t"<<DOB<<"\t"<<polling_stn;
+				file.close();
 			}
 			else
 			{
@@ -44,7 +44,7 @@ class Voter
 
 		}
 
-		static int getVoterID(const string &filename)
+		static int getVoterID(const string& filename)
 		{
 			int highestID = 0;
 			string line;
@@ -52,9 +52,9 @@ class Voter
 
 			if (inputFile.is_open())
 			{
-				while(getline("voters.txt", line))
+				while(getline(inputFile, line))
 				{
-					int currentID = stoi(line.subtr(0, line.find(",")));
+					int currentID = stoi(line.substr(0, line.find(",")));
 					highestID = max(highestID, currentID);
 				}
 				inputFile.close();
@@ -62,7 +62,7 @@ class Voter
 			return highestID+1;
 		}
 
-		void display(const string &filename)
+		void display(const string& filename)
 		{
 			
 			string line;
@@ -72,7 +72,7 @@ class Voter
 			{
 				while(getline(inputFile, line))
 				{
-					cout<<line<<endl:
+					cout<<line<<endl;
 				}
 				inputFile.close();
 			}
@@ -82,6 +82,7 @@ class Voter
 //Main 
 int main ()
 {
+	Voter myVoter;
 	int numVoters;
 	string choice;
 
@@ -91,16 +92,15 @@ int main ()
 	cout<<"Enter the numebr of Voters\n";
 	cin>>numVoters;
 
-	if (choice = "1")
+	if (choice == "1")
 	{
 		for (int i=0; i < numVoters; i++)
 		{
-			Voter myVoter;
 			myVoter.insert();
 			myVoter.save("voters.txt");
 		}
 	}
-	else if (choice = "2")
+	else if (choice == "2")
 	{
 		myVoter.display("voters.txt");
 	}
