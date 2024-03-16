@@ -10,6 +10,7 @@ class Book
 		int book_no, copies;
 		string author, title;
 	public:
+		//prompt the user to insert details
 		void insert()
 		{
 			cout<<"ENTER BOOK DETAILS:"<<endl;
@@ -23,6 +24,7 @@ class Book
 			cin>>copies;
 		}
 
+		//save the inserted details
 		void save(const string& filename)
 		{
 			//open file for appending as csv
