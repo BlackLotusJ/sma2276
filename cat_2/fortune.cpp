@@ -58,7 +58,7 @@ int main() {
 
     Employee emp_obj(id, firstName, secondName, surname, gender, dob, basicSalary);
 
-    cout << "\nEMPLOYEE DETAILS:\n";
+    cout << "\n\tEMPLOYEE DETAILS:\n";
     emp_obj.showEmployee();
 
      double pension = emp_obj.compute_pension();
