@@ -11,34 +11,34 @@ private:
     string surname;
     string gender;
     string dob; // Assuming dob is a string in dd-mm-yyyy format
-    double basicSalary;
 
 public:
+
+    double basicSalary;
     // Constructor to capture employee details
     Employee(const string& id, const string& first, const string& second, const string& last,
-              const string& gen, const string& dateOfBirth, double salary)
-        : empID(id), firstName(first), secondName(second), surname(last), gender(gen), dob(dateOfBirth), basicSalary(salary) {}
+              const string& gen, const string& dateOfBirth, double basicSalary)
+        : empID(id), firstName(first), secondName(second), surname(last), gender(gen), dob(dateOfBirth), basicSalary(basicSalary) {}
 
     // Function to display employee information
     void showEmployee() const {
         cout << "ID NUMBER\t:" << empID << endl;
-        cout << "FIRST NAME\t:"cout<< firstName << endl;
+        cout <<"FIRST NAME\t:"<< firstName << endl;
 	cout<<"SECOND NAME\t:"<<secondName<<endl;
 	cout<<"SURNAME\t:"<<surname<<endl;
         cout << "GENDER\t:" << gender << endl;
         cout << "DATE OF BIRTH: " << dob << endl;
-        cout << "BASIC SALARY: Ksh." << fixed << setprecision(2) << basicSalary << endl;
+        cout << "BASIC SALARY: Ksh."<< basicSalary << endl;
+    }
+    double compute_pension() {
+	    double pension_contribution = basicSalary * 0.05;
+	    return pension_contribution;
     }
 };
 
-// Friend function to calculate pension contribution (assuming 5% of basic salary)
-friend double compute_pension(const Employee& emp) {
-    return emp.basicSalary * 0.05;
-}
-
 int main() {
     string id, firstName, secondName, surname, gender, dob;
-    double salary;
+    double basicSalary;
 
     cout << "\tADD EMPLOYEE DETAILS:\n";
     cout << "ENTER ID NUMBER\t:";
@@ -54,15 +54,15 @@ int main() {
     cout << "DATE OF BIRTH <DD-MM-YYYY>:";
     getline(cin, dob);
     cout << "ENTER BASIC SALARY IN KSH: ";
-    cin >> salary;
+    cin>> basicSalary;
 
-    Employee emp_obj(id, firstName, secondName, surname, gender, dob, salary);
+    Employee emp_obj(id, firstName, secondName, surname, gender, dob, basicSalary);
 
     cout << "\nEMPLOYEE DETAILS:\n";
     emp_obj.showEmployee();
 
-    double pension = compute_pension(emp_obj);
-    cout << "\nEstimated Monthly Pension Contribution: Ksh." << fixed << setprecision(2) << pension << endl;
+     double pension = emp_obj.compute_pension();
+    cout << "\nEstimated Monthly Pension Contribution: Ksh."<< pension << endl;
 
     return (0);
 }
