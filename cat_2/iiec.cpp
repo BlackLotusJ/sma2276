@@ -87,6 +87,7 @@ int main ()
 	string choice;
 
 	cout<<"CHOOSE OPERATION:"<<endl;
+	cout<<"1.REGISTER NEW VOTER(S)\n2.DISPLAY LIST OF VOTERS\n";
 	getline(cin, choice);
 
 	cout<<"Enter the numebr of Voters\n";
