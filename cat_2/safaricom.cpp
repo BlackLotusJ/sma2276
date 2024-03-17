@@ -2,6 +2,10 @@
 #include <string>
 using namespace std;
 
+/*
+ *Subscriber class
+ * Stores subscriber name, phone number (with leading zero added in constructor), and airtime amount.
+ */
 class Subscriber
 {
 	private:
