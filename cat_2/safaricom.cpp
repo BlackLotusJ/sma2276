@@ -9,12 +9,12 @@ using namespace std;
 class Subscriber
 {
 	private:
-		string subscriber_name,phone_no;
+		string name,phone_no;
 		double airtime_amount;
 		int bonus_points;
 	public:
-		Subscriber(const string &name, const string &phone_no, double airtime_amount)
-			:name(name), phone_no("0" + phone_no), airtime() {}
+		Subscriber(const string& name, const string &phone_no, double airtime_amount)
+			:name(name), phone_no("0" + phone_no), airtime_amount() {}
 
 		//compute_bonuspoints uses const to  indicate it does not modify the objects state
 		int compute_bonuspoints() const
@@ -37,25 +37,24 @@ class Subscriber
 		void displayMessage() const
 		{
 			int points = compute_bonuspoints();
-			cout << name <<": (PHONE NO:" << phone_no"): AWARDED "<<points<<" BONGA POINTS. STAY WITH SAFARICOM. THE BETTER OPTION!" << endl;
+			cout << name << ": (PHONE NO:" << phone_no << "): AWARDED " << points << " BONGA POINTS. STAY WITH SAFARICOM. THE BETTER OPTION!" << endl;
 		}
-
 };
 
 //Driver Code
 int main()
 {
-	string name, phoneNumber;
-	double airtime;
+	string name, phone_no;
+	double airtime_amount;
 	
 	cout << "Enter subscriber name: ";
 	getline(cin, name);
 	cout << "Enter phone number (without leading zero): ";
-	getline(cin, phoneNumber);
+	getline(cin, phone_no);
 	cout << "Enter airtime amount: ";
-	cin >> airtime;
+	cin >> airtime_amount;
 	
-	Subscriber subscriber(name, phoneNumber, airtime);
-	subscriber.displayRewardMessage();
+	Subscriber subscriber(name, phone_no, airtime_amount);
+	subscriber.displayMessage();
 	return (0);
 }
